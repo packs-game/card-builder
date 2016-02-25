@@ -15,22 +15,47 @@
 
 	  <div class="form-group">
 	    <label for="cost">cost</label>
-	    <input type="text" class="form-control" id="cost" ng-model="edit.card.cost">
+	    <input type="number" class="form-control" id="cost" ng-model="edit.card.cost">
 	  </div>
 
 	  <div class="form-group">
 	    <label for="tier">tier</label>
-	    <input type="text" class="form-control" id="tier" ng-model="edit.card.tier">
+	    <input type="number" class="form-control" id="tier" ng-model="edit.card.tier">
 	  </div>
 
 	  <div class="form-group">
 	    <label for="type">type</label>
-	    <input type="text" class="form-control" id="type" ng-model="edit.card.type">
+	    <select class="form-control" id="type" ng-model="edit.card.type">
+	    	<option value="">No Type</option>
+	    	<option value="program">program</option>
+	    	<option value="ai">ai</option>
+	    	<option value="action">action</option>
+	    	<option value="token">token</option>
+	    	<option value="currency">currency</option>
+	    </select>
 	  </div>
 
 	  <div class="form-group">
 	    <label for="text">text</label>
 	    <textarea class="form-control" id="text" ng-model="edit.card.text"></textarea>
+	  </div>
+	  <div class="form-group">
+	    <label for="toughness">power</label>
+	    <input type="number" class="form-control" id="power" ng-model="edit.card.power">
+	  </div>
+
+	   <div class="form-group">
+	    <label for="toughness">toughness</label>
+	    <input type="number" class="form-control" id="toughness" ng-model="edit.card.toughness">
+	  </div>
+
+	  <div class="form-group">
+	  	<label for="target">target</label>
+	  	<select class="form-control" id="target" ng-model="edit.card.targetZonePattern">
+	  		<option value="">No Target</option>
+	  		<option value="player-(opponent)-inplay">Opponent Unit</option>
+	  		<option value="player-(self)-inplay">Own Unit</option>
+	  	</select>
 	  </div>
 
 	  <div class="form-group">
@@ -42,22 +67,55 @@
 	  	<div class="form-group">
 		    <label for="ability">ability</label>
 		    <br />
-		    Name: <input type="text" class="form-control" id="ability" ng-model="ability.name">
-		    Value: <input type="text" class="form-control" id="ability" ng-model="ability.value">
+		    Name: 
+		    <select class="form-control" id="ability" ng-model="ability.name">
+				<option value="">NO ABILITY</option>
+		    	<option value="createCreatureToken">Create Token</option>
+
+		    	<option value="globalToughnessEnhance">Global +0/+x</option>
+		    	<option value="globalPowerEnhance">Global +x/+0</option>
+		    	<option value="globalEnhance">Global +x/+x</option>
+		    	<option value="buff">Targeted +x/+x</option>
+
+		    	<option value="globalDamage">Global Damage</option>
+		    	<option value="targetedDamage">Targeted damage</option>
+
+		    	
+		    	<option value="activeDraw">Draw</option>
+		    	<option value="heal">Self heal</option>
+		    	<option value="dome">Dome</option>
+		    	
+
+		    	<option value="discard">Discard</option>
+		    	<option value="putIntoPlay">Put Into Play</option>
+		    	<option value="moveCurrency">Add Currency</option>
+		    	<option value="deleteCard">Delete</option>
+		    </select>
+		    Value:
+		    <select class="form-control" ng-show="ability.name == 'createCreatureToken'" ng-model="ability.value">
+		    	<option value="">NO TOKEN</option>
+				<option value="micro">1/1</option>
+				<option value="microdefender">0/2</option>
+				<option value="miniaggro">2/1</option>
+				<option value="minidefender">1/2</option>
+				<option value="backbot">1/3</option>
+				<option value="bot">2/2</option>
+				<option value="attackbot">3/1</option>
+				<option value="bot41">4/1</option>
+				<option value="bot32">3/2</option>
+				<option value="bot23">2/3</option>
+				<option value="bot14">1/4</option>
+				<option value="bang">3/3</option>
+				<option value="boom">4/4</option>
+				<option value="fivefive">5/5</option>
+		    </select>
+		    <input type="text" class="form-control" id="ability" ng-model="ability.value" ng-show="ability.name !== 'createCreatureToken'">
 		 </div>
 	  </div>
-	   <div class="form-group">
-	    <label for="toughness">power</label>
-	    <input type="text" class="form-control" id="power" ng-model="edit.card.power">
-	  </div>
-
-	   <div class="form-group">
-	    <label for="toughness">toughness</label>
-	    <input type="text" class="form-control" id="toughness" ng-model="edit.card.toughness">
-	  </div>
-	  <button type="button" ng-click="edit.addAbility()">Add Ability</button>
-
-	  <button type="submit" class="btn btn-default">Submit</button>
+	  <button type="button" class="btn btn-default" ng-click="edit.addAbility()">Add Ability</button>
+	  <br />
+	  <br />
+	  <button type="submit" class="btn btn-primary">Submit</button>
 	  <hr />
 	  <hr />
 	  <div class="form-group">

@@ -10,7 +10,7 @@
 angular.module('cardBuilderApp')
 	.controller('EditCtrl', function(Cards, $routeParams, $scope, $location) {
 		var vm = this;
-		this.token = '35796f28-673f-4982-b867-6dcdd53b4dcd';
+		this.token = 'c74705b1-1503-4301-93c6-e6d179e42957';
 		this.id = '56a5799b094694ea6fdfae7e';
 
 		this.card = {
@@ -42,6 +42,6 @@ angular.module('cardBuilderApp')
 
 		this.addAbility = function() {
 			if (!this.card.abilities) { this.card.abilities = []; }
-			this.card.abilities.push({name: '', value:''})
+			this.card.abilities.push({name: '', value:''});
 		};
 	});

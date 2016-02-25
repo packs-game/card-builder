@@ -38,5 +38,5 @@ angular
         redirectTo: '/'
       });
       $locationProvider.html5Mode(true).hashPrefix('!');
-      $httpProvider.defaults.headers.delete = { "Content-Type": "application/json;charset=utf-8" };
+      $httpProvider.defaults.headers.delete = { 'Content-Type': 'application/json;charset=utf-8' };
   });
