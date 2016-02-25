@@ -40,4 +40,9 @@ angular.module('cardBuilderApp')
 				$location.path('/');
 			});
 		};
+
+		this.addAbility = function() {
+			if (!this.card.abilities) { this.card.abilities = []; }
+			this.card.abilities.push({name: '', value:''})
+		};
 	});
