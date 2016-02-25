@@ -71,6 +71,8 @@
 		    <select class="form-control" id="ability" ng-model="ability.name">
 				<option value="">NO ABILITY</option>
 		    	<option value="createCreatureToken">Create Token</option>
+		    	<option value="addCardToCurrency">Add to Currency</option>
+		    	<option value="addCardToDiscard">Add to Discard</option>
 
 		    	<option value="globalToughnessEnhance">Global +0/+x</option>
 		    	<option value="globalPowerEnhance">Global +x/+0</option>
@@ -96,7 +98,12 @@
 		    	ng-options="card.name as edit.tokenDisplay(card) for card in edit.allTokens">
 		    	<option>NO TOKEN</option>
 		    </select>
-		    <input type="text" class="form-control" id="ability" ng-model="ability.value" ng-show="ability.name !== 'createCreatureToken'">
+		    <select class="form-control" ng-show="ability.name == 'addCardToCurrency' || ability.name == 'addCardToDiscard'" ng-model="ability.value"
+		    	ng-options="card.name as card.name for card in edit.allCards">
+		    	<option>NO CARD</option>
+		    </select>
+		    <input type="text" class="form-control" id="ability" ng-model="ability.value"
+		    	ng-show="ability.name !== 'createCreatureToken' && ability.name != 'addCardToCurrency' && ability.name != 'addCardToDiscard'">
 		 </div>
 	  </div>
 	  <button type="button" class="btn btn-default" ng-click="edit.addAbility()">Add Ability</button>
@@ -117,5 +124,4 @@
 	</form>
 	<button class="btn btn-danger" ng-click="edit.delete()" ng-show="edit.card._id">DELETE</button>
 	<hr />
-	{{edit.card}}
 </div>

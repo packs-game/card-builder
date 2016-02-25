@@ -18,16 +18,16 @@ angular.module('cardBuilderApp')
 		};
 		vm.allTokens = [];
 		var cards = Cards.get(function() {
+			vm.allCards = cards.allCards;
+			cards.allCards.forEach(function(card){
+				if (card.type === 'token'){
+					vm.allTokens.push(card);
+				}
+				if (card._id === $routeParams.id) {
+					vm.card = card;
+				}
+			});
 			if ($routeParams.id) {
-				vm.allCards = cards.allCards;
-				cards.allCards.forEach(function(card){
-					if (card.type === 'token'){
-						vm.allTokens.push(card);
-					}
-					if (card._id === $routeParams.id) {
-						vm.card = card;
-					}
-				});
 				if (!vm.card._id) {
 					vm.error = 'NO CARD WITH ID';
 				}
@@ -36,6 +36,9 @@ angular.module('cardBuilderApp')
 		this.save = function() {
 			Cards.save(this.id, this.token, this.card).then(function(data){
 				vm.card = data.data;
+				window.alert('saved');
+			}, function(){
+				window.alert('err');
 			});
 		};
 		this.delete = function() {
@@ -52,5 +55,5 @@ angular.module('cardBuilderApp')
 
 		this.tokenDisplay = function(card) {
 			return card.name + ' ' + card.power + '/'+card.toughness;
-		}
+		};
 	});
