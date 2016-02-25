@@ -10,7 +10,7 @@
 angular.module('cardBuilderApp')
 	.controller('EditCtrl', function(Cards, $routeParams, $scope, $location) {
 		var vm = this;
-		this.token = '80f3648e-ccfa-47fc-a333-c7b1ad7a0eda';
+		this.token = '35796f28-673f-4982-b867-6dcdd53b4dcd';
 		this.id = '56a5799b094694ea6fdfae7e';
 
 		this.card = {
@@ -24,7 +24,6 @@ angular.module('cardBuilderApp')
 					}
 				});
 				if (!vm.card._id) {
-					console.log('wat')
 					vm.error = 'NO CARD WITH ID';
 				}
 			}
