@@ -1,10 +1,21 @@
 <div class="row">
 	<h1>Editor</h1>
-
-	{{edit.card}}
+	<a href="/">List</a>
+	{{edit.error}}
 	<br />
 	<form ng-submit="edit.save()">
-	  
+	  <div class="form-group" ng-show="edit.card._id">
+	    <label>_id</label>
+	    <input type="text" class="form-control" value="{{edit.card._id}}" disabled>
+	  </div>
+	  <div class="form-group">
+	    <label for="name">name</label>
+	    <input type="text" class="form-control" id="name" ng-model="edit.card.name">
+	  </div>
+
+	  <button type="submit" class="btn btn-default">Submit</button>
+	  <hr />
+	  <hr />
 	  <div class="form-group">
 	    <label for="id">User id</label>
 	    <input type="text" class="form-control" id="id" ng-model="edit.id">
@@ -14,8 +25,8 @@
 	    <label for="token">User Token</label>
 	    <input type="text" class="form-control" id="token" ng-model="edit.token">
 	  </div>
-	  	
-		
-	  <button type="submit" class="btn btn-default">Submit</button>
 	</form>
+	<button class="btn btn-danger" ng-click="edit.delete()" ng-show="edit.card._id">DELETE</button>
+	<hr />
+	{{edit.card}}
 </div>

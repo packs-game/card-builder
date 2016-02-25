@@ -19,16 +19,35 @@ angular.module('cardBuilderApp')
 		});
 
 		return {
-			get: function() {
+			get: function(cb) {
 				serviceReq.then(function() {
 					$http.get(services.cards + '/cards').then(function(data) {
 						c.allCards = data.data;
+						if (cb) { cb(); }
 					});
 				});
 				return c;
 			},
 			save: function(id,token,card) {
-				return $http.post(services.cards + '/cards',{id: id, token: token, card: card});
+				var url = services.cards + '/card';
+				if (card._id) {
+					url += '/' + card._id;
+				}
+				return $http.post(url,{id: id, token: token, card: card});
+			},
+			delete: function(id,token,cardId) {
+				var url = services.cards + '/card/' + cardId;
+				return $http({
+					url: url,
+					method: 'DELETE',
+					data: {
+						id: id,
+						token: token
+					},
+					headers: {
+						'Content-Type': 'application/json;charset=utf-8'
+					}
+				});
 			}
 		};
 	});

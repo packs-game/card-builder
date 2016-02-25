@@ -8,25 +8,36 @@
  * Controller of the cardBuilderApp
  */
 angular.module('cardBuilderApp')
-	.controller('EditCtrl', function(Cards, $routeParams) {
-		this.token = '';
-		this.id = '';
+	.controller('EditCtrl', function(Cards, $routeParams, $scope, $location) {
+		var vm = this;
+		this.token = '80f3648e-ccfa-47fc-a333-c7b1ad7a0eda';
+		this.id = '56a5799b094694ea6fdfae7e';
 
 		this.card = {
 
 		};
-		var cards = Cards.get();
-
-		if ($routeParams.id) {
-			cards.allCards.forEach(function(card){
-				if (card.id === $routeParams.id) {
-					this.card = card;
+		var cards = Cards.get(function() {
+			if ($routeParams.id) {
+				cards.allCards.forEach(function(card){
+					if (card._id === $routeParams.id) {
+						vm.card = card;
+					}
+				});
+				if (!vm.card._id) {
+					console.log('wat')
+					vm.error = 'NO CARD WITH ID';
 				}
-			});
-		}
+			}
+		});
 		this.save = function() {
 			Cards.save(this.id, this.token, this.card).then(function(data){
-				console.log(data);
+				vm.card = data.data;
+			});
+		};
+		this.delete = function() {
+			Cards.delete(this.id, this.token, this.card._id).then(function(data){
+				vm.card = data.data;
+				$location.path('/');
 			});
 		};
 	});
