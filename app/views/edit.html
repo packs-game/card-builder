@@ -92,22 +92,9 @@
 		    	<option value="deleteCard">Delete</option>
 		    </select>
 		    Value:
-		    <select class="form-control" ng-show="ability.name == 'createCreatureToken'" ng-model="ability.value">
-		    	<option value="">NO TOKEN</option>
-				<option value="micro">1/1</option>
-				<option value="microdefender">0/2</option>
-				<option value="miniaggro">2/1</option>
-				<option value="minidefender">1/2</option>
-				<option value="backbot">1/3</option>
-				<option value="bot">2/2</option>
-				<option value="attackbot">3/1</option>
-				<option value="bot41">4/1</option>
-				<option value="bot32">3/2</option>
-				<option value="bot23">2/3</option>
-				<option value="bot14">1/4</option>
-				<option value="bang">3/3</option>
-				<option value="boom">4/4</option>
-				<option value="fivefive">5/5</option>
+		    <select class="form-control" ng-show="ability.name == 'createCreatureToken'" ng-model="ability.value"
+		    	ng-options="card.name as edit.tokenDisplay(card) for card in edit.allTokens">
+		    	<option>NO TOKEN</option>
 		    </select>
 		    <input type="text" class="form-control" id="ability" ng-model="ability.value" ng-show="ability.name !== 'createCreatureToken'">
 		 </div>

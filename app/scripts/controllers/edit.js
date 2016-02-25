@@ -10,15 +10,20 @@
 angular.module('cardBuilderApp')
 	.controller('EditCtrl', function(Cards, $routeParams, $scope, $location) {
 		var vm = this;
-		this.token = 'c74705b1-1503-4301-93c6-e6d179e42957';
+		this.token = 'bd693385-312a-4819-8ff6-dfeed1980a07';
 		this.id = '56a5799b094694ea6fdfae7e';
 
 		this.card = {
 
 		};
+		vm.allTokens = [];
 		var cards = Cards.get(function() {
 			if ($routeParams.id) {
+				vm.allCards = cards.allCards;
 				cards.allCards.forEach(function(card){
+					if (card.type === 'token'){
+						vm.allTokens.push(card);
+					}
 					if (card._id === $routeParams.id) {
 						vm.card = card;
 					}
@@ -44,4 +49,8 @@ angular.module('cardBuilderApp')
 			if (!this.card.abilities) { this.card.abilities = []; }
 			this.card.abilities.push({name: '', value:''});
 		};
+
+		this.tokenDisplay = function(card) {
+			return card.name + ' ' + card.power + '/'+card.toughness;
+		}
 	});

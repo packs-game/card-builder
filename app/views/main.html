@@ -16,7 +16,7 @@
 				<th>power</th>
 				<th>toughness</th>
 				<th>img</th>
-				<th>ID</th>
+				<th>abilities</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,7 +28,11 @@
 				<td>{{card.power}}</td>
 				<td>{{card.toughness}}</td>
 				<td>{{card.img}}</td>
-				<td>{{card._id}}</td>
+				<td>
+					<div ng-repeat="ability in card.abilities">
+						{{ability.name}}: {{ability.value}}
+					</div>
+				</td>
 			</tr>
 
 		</tbody>
