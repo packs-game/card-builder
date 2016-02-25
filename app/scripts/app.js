@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'datatables'
   ])
   .config(function($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
@@ -39,4 +40,7 @@ angular
       });
       $locationProvider.html5Mode(true).hashPrefix('!');
       $httpProvider.defaults.headers.delete = { 'Content-Type': 'application/json;charset=utf-8' };
+  })
+  .run(function(DTDefaultOptions) {
+    DTDefaultOptions.setDisplayLength(100);
   });

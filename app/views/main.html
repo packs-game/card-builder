@@ -6,9 +6,31 @@
 	<br />
 	Total Cards: {{main.cards.allCards.length}}
 	<hr />
-	<ul>
-	  <li ng-repeat="card in main.cards.allCards">
-	    <a href="/edit/{{card._id}}">{{card.name}}</a>
-	  </li>
-	</ul>
+	<table datatable="ng" class="table row-border hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>type</th>
+				<th>tier</th>
+				<th>text</th>
+				<th>power</th>
+				<th>toughness</th>
+				<th>img</th>
+				<th>ID</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="card in main.cards.allCards">
+				<td><a href="/edit/{{card._id}}">{{card.name}}</a></td>
+				<td>{{card.type}}</td>
+				<td>{{card.tier}}</td>
+				<td style="width: 20%">{{card.text}}</td>
+				<td>{{card.power}}</td>
+				<td>{{card.toughness}}</td>
+				<td>{{card.img}}</td>
+				<td>{{card._id}}</td>
+			</tr>
+
+		</tbody>
+	</table>
 </div>
