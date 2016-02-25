@@ -1,0 +1,10 @@
+<div class="row">
+	<h1>Card Builder</h1>
+
+	<a href="/edit">New</a>
+	<ul>
+	  <li ng-repeat="card in main.cards.allCards">
+	    <a href="/edit/{{card.id}}">{{card.name}}</a>
+	  </li>
+	</ul>
+</div>

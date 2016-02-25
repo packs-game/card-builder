@@ -1,0 +1,21 @@
+<div class="row">
+	<h1>Editor</h1>
+
+	{{edit.card}}
+	<br />
+	<form ng-submit="edit.save()">
+	  
+	  <div class="form-group">
+	    <label for="id">User id</label>
+	    <input type="text" class="form-control" id="id" ng-model="edit.id">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="token">User Token</label>
+	    <input type="text" class="form-control" id="token" ng-model="edit.token">
+	  </div>
+	  	
+		
+	  <button type="submit" class="btn btn-default">Submit</button>
+	</form>
+</div>
