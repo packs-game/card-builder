@@ -48,6 +48,10 @@ angular.module('cardBuilderApp')
 			});
 		};
 
+		this.remove = function(index) {
+			vm.card.abilities.splice(index,1);
+		};
+
 		this.addAbility = function() {
 			if (!this.card.abilities) { this.card.abilities = []; }
 			this.card.abilities.push({name: '', value:''});

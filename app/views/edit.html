@@ -32,6 +32,7 @@
 	    	<option value="action">action</option>
 	    	<option value="token">token</option>
 	    	<option value="currency">currency</option>
+	    	<option value="mainframe">mainframe</option>
 	    </select>
 	  </div>
 
@@ -55,6 +56,8 @@
 	  		<option value="">No Target</option>
 	  		<option value="player-(opponent)-inplay">Opponent Unit</option>
 	  		<option value="player-(self)-inplay">Own Unit</option>
+	  		<option value="inplay">Any Unit</option>
+	  		<option value="anycreatureplayer">Any Unit or Player</option>
 	  	</select>
 	  </div>
 
@@ -63,9 +66,9 @@
 	    <input type="text" class="form-control" id="img" ng-model="edit.card.img">
 	  </div>
 
-	  <div ng-repeat="ability in edit.card.abilities">
+	  <div ng-repeat="ability in edit.card.abilities track by $index">
 	  	<div class="form-group">
-		    <label for="ability">ability</label>
+		    <label for="ability">ability</label><button type="button" ng-click="edit.remove($index)">X</button>
 		    <br />
 		    Name: 
 		    <select class="form-control" id="ability" ng-model="ability.name">
@@ -104,12 +107,15 @@
 		    </select>
 		    <input type="text" class="form-control" id="ability" ng-model="ability.value"
 		    	ng-show="ability.name !== 'createCreatureToken' && ability.name != 'addCardToCurrency' && ability.name != 'addCardToDiscard'">
+		    (use "self" for this card)
 		 </div>
 	  </div>
 	  <button type="button" class="btn btn-default" ng-click="edit.addAbility()">Add Ability</button>
 	  <br />
 	  <br />
 	  <button type="submit" class="btn btn-primary">Submit</button>
+	  <br />
+	  **Don't forget to discard or put the card into play**
 	  <hr />
 	  <hr />
 	  <div class="form-group">
