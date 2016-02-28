@@ -12,6 +12,7 @@
 				<th>Name</th>
 				<th>cost</th>
 				<th>type</th>
+				<th>subtype</th>
 				<th>tier</th>
 				<th>text</th>
 				<th>power</th>
@@ -25,6 +26,7 @@
 				<td><a href="/edit/{{card._id}}">{{card.name}}</a></td>
 				<td>{{card.cost}}</td>
 				<td>{{card.type}}</td>
+				<td>{{card.subtype}}</td>
 				<td>{{card.tier}}</td>
 				<td style="width: 20%">{{card.text}}</td>
 				<td>{{card.power}}</td>
@@ -33,6 +35,11 @@
 				<td>
 					<div ng-repeat="ability in card.abilities">
 						{{ability.name}}: {{ability.value}}
+						<span ng-show="ability.name == 'createCreatureToken' || ability.name == 'addCardToCurrency' || ability.name == 'addCardToDiscard'">
+							<a href="/edit/{{main.getCardFromName(ability.value)._id}}">
+								{{'edit' || 'ERROR'}}
+							</a>
+						</span>
 					</div>
 				</td>
 			</tr>

@@ -9,7 +9,18 @@
  */
 angular.module('cardBuilderApp')
 	.controller('MainCtrl', function(Cards) {
+		var vm = this;
 		this.cards = Cards.get();
+
+		this.getCardFromName = function(n) {
+			var toRet;
+			vm.cards.allCards.forEach(function(c) {
+				if (c.name === n) {
+					toRet = c;
+				}
+			});
+			return toRet;
+		};
 	});
 
 angular.module('cardBuilderApp')

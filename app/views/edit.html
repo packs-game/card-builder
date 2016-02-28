@@ -27,12 +27,19 @@
 	    <label for="type">type</label>
 	    <select class="form-control" id="type" ng-model="edit.card.type">
 	    	<option value="">No Type</option>
-	    	<option value="program">program</option>
-	    	<option value="ai">ai</option>
-	    	<option value="action">action</option>
-	    	<option value="token">token</option>
+	    	<option value="program">program</option> <!--creature-->
+	    	<option value="command">command</option> <!-- sourcery-->
 	    	<option value="currency">currency</option>
 	    	<option value="mainframe">mainframe</option>
+	    </select>
+	  </div>
+
+	  <div class="form-group">
+	    <label for="subtype">subtype</label>
+	    <select class="form-control" id="subtype" ng-model="edit.card.subtype">
+	    	<option value="">No Subtype</option>
+	    	<option value="ai">ai</option>
+	    	<option value="bot">bot</option> <!--token-->
 	    </select>
 	  </div>
 
@@ -97,6 +104,7 @@
 		    	<option value="deleteCard">Delete</option>
 		    </select>
 		    Value:
+		    {{ability}}
 		    <select class="form-control" ng-show="ability.name == 'createCreatureToken'" ng-model="ability.value"
 		    	ng-options="card.name as edit.tokenDisplay(card) for card in edit.allTokens">
 		    	<option>NO TOKEN</option>

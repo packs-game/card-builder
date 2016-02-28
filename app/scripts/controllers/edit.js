@@ -18,7 +18,7 @@ angular.module('cardBuilderApp')
 		var cards = Cards.get(function() {
 			vm.allCards = cards.allCards;
 			cards.allCards.forEach(function(card){
-				if (card.type === 'token'){
+				if (card.subtype === 'bot'){
 					vm.allTokens.push(card);
 				}
 				if (card._id === $routeParams.id) {
