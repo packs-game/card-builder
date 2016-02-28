@@ -104,7 +104,6 @@
 		    	<option value="deleteCard">Delete</option>
 		    </select>
 		    Value:
-		    {{ability}}
 		    <select class="form-control" ng-show="ability.name == 'createCreatureToken'" ng-model="ability.value"
 		    	ng-options="card.name as edit.tokenDisplay(card) for card in edit.allTokens">
 		    	<option>NO TOKEN</option>

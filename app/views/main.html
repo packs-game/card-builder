@@ -37,7 +37,7 @@
 						{{ability.name}}: {{ability.value}}
 						<span ng-show="ability.name == 'createCreatureToken' || ability.name == 'addCardToCurrency' || ability.name == 'addCardToDiscard'">
 							<a href="/edit/{{main.getCardFromName(ability.value)._id}}">
-								{{'edit' || 'ERROR'}}
+								{{main.getCardFromName(ability.value)._id ? 'edit' : 'ERROR'}}
 							</a>
 						</span>
 					</div>
