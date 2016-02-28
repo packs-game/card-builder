@@ -23,8 +23,19 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container">
+    <div class="container" ng-controller="RootCtrl as root">
         <div ng-view=""></div>
+        <form>
+        <div class="form-group">
+            <label for="id">User id</label>
+            <input type="text" class="form-control" id="id" ng-model="root.user.id">
+          </div>
+
+          <div class="form-group">
+            <label for="token">User Token</label>
+            <input type="text" class="form-control" id="token" ng-model="root.user.token">
+          </div>
+        </form>
     </div>
 
     <!-- build:js(.) scripts/oldieshim.js -->

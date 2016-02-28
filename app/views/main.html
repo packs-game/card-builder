@@ -10,6 +10,7 @@
 		<thead>
 			<tr>
 				<th>Name</th>
+				<th>cost</th>
 				<th>type</th>
 				<th>tier</th>
 				<th>text</th>
@@ -22,6 +23,7 @@
 		<tbody>
 			<tr ng-repeat="card in main.cards.allCards">
 				<td><a href="/edit/{{card._id}}">{{card.name}}</a></td>
+				<td>{{card.cost}}</td>
 				<td>{{card.type}}</td>
 				<td>{{card.tier}}</td>
 				<td style="width: 20%">{{card.text}}</td>

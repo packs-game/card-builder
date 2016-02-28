@@ -10,8 +10,6 @@
 angular.module('cardBuilderApp')
 	.controller('EditCtrl', function(Cards, $routeParams, $scope, $location) {
 		var vm = this;
-		this.token = 'bd693385-312a-4819-8ff6-dfeed1980a07';
-		this.id = '56a5799b094694ea6fdfae7e';
 
 		this.card = {
 
@@ -34,7 +32,7 @@ angular.module('cardBuilderApp')
 			}
 		});
 		this.save = function() {
-			Cards.save(this.id, this.token, this.card).then(function(data){
+			Cards.save($scope.root.user.id, $scope.root.user.token, this.card).then(function(data){
 				vm.card = data.data;
 				window.alert('saved');
 			}, function(){
@@ -42,7 +40,7 @@ angular.module('cardBuilderApp')
 			});
 		};
 		this.delete = function() {
-			Cards.delete(this.id, this.token, this.card._id).then(function(data){
+			Cards.delete($scope.root.user.id, $scope.root.user.token, this.card._id).then(function(data){
 				vm.card = data.data;
 				$location.path('/');
 			});
